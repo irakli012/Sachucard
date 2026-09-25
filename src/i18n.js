@@ -24,7 +24,6 @@ const dict = {
     'nav.aria': 'მთავარი ნავიგაცია',
     'lang.aria': 'ენის არჩევა',
 
-    'hero.eyebrow': 'უნივერსალური სასაჩუქრე ბარათი',
     'hero.title1': 'ᲨᲔᲣᲙᲕᲔᲗᲔ',
     'hero.title2': 'ᲡᲐᲩᲣᲥᲐᲠᲓᲘ',
     'hero.lead': 'შეუკვეთე ონლაინ და აჩუქე შესაძლებლობა — შეიძინოს რაც უნდა და სადაც უნდა.',
@@ -99,7 +98,6 @@ const dict = {
     'nav.aria': 'Main navigation',
     'lang.aria': 'Choose language',
 
-    'hero.eyebrow': 'Universal gift card',
     'hero.title1': 'ORDER',
     'hero.title2': 'SACHUKARDI',
     'hero.lead': 'Order online and gift the freedom to buy whatever they want, wherever they want.',

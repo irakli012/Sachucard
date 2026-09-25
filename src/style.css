@@ -287,7 +287,7 @@ main, .footer { position: relative; z-index: 1; }
 }
 .hero__text { max-width: min(640px, 52vw); }
 .hero__title {
-  margin: 28px 0 24px;
+  margin: 0 0 24px;
   /* the longest line (ᲡᲐᲩᲣᲥᲐᲠᲓᲘ) is ~6.7em wide; this keeps it inside the 52vw / 640px column */
   font-size: clamp(40px, 6.4vw, 92px);
   font-weight: 900;
@@ -693,7 +693,7 @@ main, .footer { position: relative; z-index: 1; }
     text-align: center;
   }
   .hero__text { max-width: none; display: flex; flex-direction: column; align-items: center; margin: 0 auto; }
-  .hero__title { margin: 20px 0 16px; }
+  .hero__title { margin: 0 0 16px; }
   .hero__cta { justify-content: center; margin-top: 28px; }
   .scroll-hint { display: none; }
 
