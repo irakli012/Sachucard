@@ -360,6 +360,12 @@ export function createScene(canvas, { cardUrl, wordmarkUrl, backLines, reducedMo
     const t = clock.elapsedTime;
 
     poseAt(window.scrollY);
+    // Off-screen teleport (above the viewport ↔ below it, between the steps
+    // and the final section): move there instantly. Easing it would sweep the
+    // card across the whole screen.
+    if (Math.abs(cur.y) > 1.5 && Math.abs(target.y) > 1.5 && Math.sign(cur.y) !== Math.sign(target.y)) {
+      Object.assign(cur, target);
+    }
     const k = 1 - Math.exp(-dt * (reducedMotion ? 30 : 7));
     for (const key of KEYS) cur[key] += (target[key] - cur[key]) * k;
 
