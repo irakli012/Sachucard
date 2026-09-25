@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>საჩუქარდი — უნივერსალური სასაჩუქრე ბარათი</title>
+  <meta name="description" content="შეუკვეთე საჩუქარდი ონლაინ და აჩუქე შესაძლებლობა, შეიძინოს რაც უნდა და სადაც უნდა." />
+  <meta name="theme-color" content="#10131F" />
+  <meta property="og:title" content="საჩუქარდი — უნივერსალური სასაჩუქრე ბარათი" />
+  <meta property="og:description" content="ყველაფრისთვის, რისი ყიდვაც გინდა." />
+  <meta property="og:image" content="/images/card-face.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preload" href="/fonts/HMpangram-Black.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/HMpangram-Medium.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/HMpangram-Bold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/HMpangram-Light.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/images/card-face.png" as="image" />
+
+  <!-- Loading screen. Inlined so it paints on the very first frame, before the
+       stylesheet, fonts or scripts arrive. main.js removes it once the fonts
+       and the 3D card are ready; the failsafe animation hides it anyway if the
+       script never runs. -->
+  <style>
+    html.is-loading, html.is-loading body { overflow: hidden; }
+    #loader {
+      position: fixed; inset: 0; z-index: 100;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+      background: #10131F;
+      animation: loader-failsafe .5s ease 8s forwards;
+    }
+    #loader svg { width: min(300px, 62vw); height: auto; overflow: visible; }
+    #loader .lw { fill: #fff; opacity: .16; }
+    #loader .lw-fill { fill: #fff; clip-path: inset(0 100% 0 0); animation: lw-fill 1.4s cubic-bezier(.65,0,.35,1) .1s forwards; }
+    #loader .lbar { width: 120px; height: 2px; border-radius: 2px; background: #343A48; overflow: hidden; }
+    #loader .lbar i { display: block; width: 40%; height: 100%; background: #90C850; box-shadow: 0 0 10px #90C850; animation: lbar 1.1s cubic-bezier(.65,0,.35,1) infinite; }
+    @keyframes lw-fill { to { clip-path: inset(0 0 0 0); } }
+    @keyframes lbar { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+    @keyframes loader-failsafe { to { opacity: 0; visibility: hidden; } }
+    @media (prefers-reduced-motion: reduce) { #loader .lw-fill { animation: none; clip-path: none; } #loader .lbar i { animation: none; width: 100%; } }
+  </style>
+  <noscript><style>#loader { display: none; } html.is-loading, html.is-loading body { overflow: auto; }</style></noscript>
+  <script>
+    document.documentElement.classList.add('is-loading');
+    history.scrollRestoration = 'manual';
+    setTimeout(function () { document.documentElement.classList.remove('is-loading'); }, 8000);
+  </script>
+
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="loader" role="status" aria-label="იტვირთება…">
+    <svg viewBox="865 193 593 95" aria-hidden="true"><defs><path id="lwp" fill-rule="evenodd" d="M 1042 200.464 L 1042 207.928 1045.732 210.464 C 1050.470 213.683, 1053.999 213.694, 1057 210.500 C 1058.292 209.125, 1060.380 208, 1061.640 208 C 1063.870 208, 1063.940 208.293, 1064.216 218.750 L 1064.500 229.500 1070 229.500 L 1075.500 229.500 1076 219 L 1076.500 208.500 1081 208.500 L 1085.500 208.500 1085.755 235.500 C 1085.995 260.802, 1085.887 262.701, 1084.053 265.696 C 1080.642 271.265, 1072.272 271.426, 1066.872 266.026 C 1064.287 263.441, 1064 262.491, 1064 256.527 C 1064 252.719, 1064.612 248.718, 1065.438 247.120 C 1066.863 244.363, 1066.836 244.319, 1062.411 242.169 C 1059.956 240.976, 1057.525 240, 1057.009 240 C 1056.494 240, 1054.931 241.679, 1053.536 243.732 C 1051.325 246.986, 1051 248.527, 1051 255.764 C 1051 264.980, 1052.512 269.821, 1056.803 274.342 C 1066.083 284.119, 1085.197 284.429, 1093.324 274.934 C 1095.231 272.706, 1097.289 268.910, 1097.896 266.499 C 1098.570 263.821, 1099 251.246, 1099 234.192 C 1099 207.364, 1098.918 206.165, 1096.905 203.607 C 1094.227 200.201, 1088.186 197.121, 1082.753 196.391 C 1079.241 195.918, 1077.834 196.273, 1074.680 198.427 L 1070.860 201.035 1068.328 199.044 C 1064.249 195.834, 1059.642 195.440, 1055.577 197.952 C 1051.681 200.360, 1050.189 199.990, 1046.076 195.592 C 1044.742 194.166, 1043.280 193, 1042.826 193 C 1042.372 193, 1042 196.359, 1042 200.464 M 866.190 230.250 L 866.500 264.500 869.500 269.972 C 874.296 278.719, 882.352 282.748, 892.889 281.668 C 907.083 280.214, 915.893 267.703, 914.782 250.579 C 914.276 242.790, 912.756 239.163, 906.882 231.731 C 904.747 229.030, 903 226.474, 903 226.050 C 903 225.626, 904.125 223.621, 905.500 221.595 C 906.875 219.569, 908 217.738, 908 217.527 C 908 216.998, 897.546 214, 895.705 214 C 893.916 214, 891 220.851, 891 225.052 C 891 228.787, 892.941 233.094, 897.389 239.226 C 905.335 250.182, 902.470 267.696, 892.423 269.580 C 887.221 270.556, 883.088 268.403, 880.895 263.576 C 879.220 259.887, 879.042 256.487, 879.022 227.750 L 879 196 872.440 196 L 865.880 196 866.190 230.250 M 937.318 203.966 C 938.087 213.934, 940.498 218.804, 949.860 229.298 C 953.687 233.587, 957.537 238.612, 958.417 240.466 C 962.088 248.201, 961.612 262.014, 957.511 266.783 C 955.488 269.133, 954.423 269.500, 949.609 269.500 C 944.886 269.500, 943.634 269.089, 941.322 266.776 C 937.503 262.958, 936.831 253.430, 939.892 246.511 C 941.052 243.890, 942 241.586, 942 241.390 C 942 241.194, 939.768 239.903, 937.040 238.520 L 932.080 236.007 929.602 240.253 C 925.853 246.677, 925 249.583, 925 255.939 C 925 266.464, 929.586 275.146, 937.308 279.242 C 940.624 281.001, 943.178 281.469, 949.527 281.483 C 960.900 281.507, 966.326 278.669, 970.497 270.514 C 973.300 265.035, 973.500 263.906, 973.500 253.572 C 973.500 243.747, 973.208 241.878, 970.909 236.977 C 969.485 233.940, 965.495 228.315, 962.043 224.477 C 951.909 213.210, 950 209.695, 950 202.304 L 950 196 943.352 196 L 936.704 196 937.318 203.966 M 999 196.640 C 993.075 199.023, 990.569 200.740, 988.439 203.875 L 986 207.464 986 244.732 L 986 282 992 282 L 998 282 998 263.950 C 998 243.866, 998.588 241.442, 1004.299 237.960 C 1008.150 235.611, 1011.111 235.489, 1015.033 237.517 C 1019.470 239.811, 1021 243.737, 1021 252.825 C 1021 262.680, 1019.355 267.479, 1012.986 276.208 L 1008.031 283 1015.266 282.969 L 1022.500 282.938 1025.634 278.719 C 1032.112 270, 1033.369 266.347, 1033.803 254.987 C 1034.423 238.759, 1031.608 231.732, 1022.633 227.114 C 1016.536 223.976, 1006.303 223.589, 1001.250 226.305 L 998 228.051 998 219.700 C 998 212.263, 998.254 211.110, 1000.314 209.174 C 1005.975 203.857, 1015.780 208.818, 1013.542 215.868 C 1013.009 217.546, 1013.534 218.054, 1016.702 218.934 C 1022.314 220.493, 1023.558 220.266, 1024.839 217.453 C 1027.979 210.563, 1024.731 202.096, 1017.611 198.607 C 1013.748 196.715, 1001.921 195.464, 999 196.640 M 1137 201.500 L 1137 207 1142 207 L 1147 207 1147 211.942 L 1147 216.884 1142.750 214.454 C 1134.472 209.721, 1121.474 212.192, 1117.146 219.321 C 1113.119 225.955, 1113.604 234.400, 1118.264 238.778 L 1120.550 240.926 1124.844 238.365 C 1128.066 236.443, 1128.961 235.391, 1128.428 234.152 C 1126.991 230.812, 1126.803 226.942, 1128.008 225.491 C 1130.143 222.917, 1138.310 223.549, 1141.894 226.564 C 1146.086 230.092, 1146.988 234.289, 1146.994 250.295 C 1147 263.509, 1146.899 264.192, 1144.612 266.479 C 1139.941 271.150, 1129.726 271.010, 1125.962 266.224 C 1123.881 263.579, 1123.742 260.869, 1125.414 255.500 C 1125.931 253.839, 1125.197 253.134, 1121.088 251.345 C 1116.501 249.348, 1116.033 249.311, 1114.698 250.845 C 1109.054 257.329, 1110.080 268.080, 1117.002 275.002 C 1129.019 287.019, 1154.743 282.397, 1158.885 267.477 C 1159.589 264.939, 1159.991 251.288, 1159.994 229.750 L 1160 196 1148.500 196 L 1137 196 1137 201.500 M 1184 202.462 C 1184 212.289, 1186.681 218.184, 1195.652 228.077 C 1199.853 232.709, 1204.115 238.300, 1205.123 240.500 C 1207.448 245.574, 1207.729 260.690, 1205.575 264.855 C 1202.035 271.701, 1189.965 271.701, 1186.425 264.855 C 1184.346 260.834, 1184.639 250.392, 1186.976 245.244 L 1188.908 240.987 1183.972 238.486 L 1179.035 235.984 1176.732 239.742 C 1172.808 246.145, 1172 248.868, 1172 255.681 C 1172 263.932, 1173.459 268.888, 1177.238 273.473 C 1185.418 283.396, 1203.643 284.835, 1213.087 276.303 C 1218.687 271.243, 1220.249 265.558, 1219.836 251.734 C 1219.434 238.289, 1217.921 234.492, 1209.125 224.850 C 1198.309 212.993, 1197 210.619, 1197 202.850 L 1197 196 1190.500 196 L 1184 196 1184 202.462 M 1272.060 197.527 C 1254.494 200.706, 1242.311 208.646, 1236.042 221 C 1232.214 228.542, 1231 235.139, 1231 248.389 C 1231 258.990, 1231.188 260.056, 1234.068 265.821 C 1237.629 272.945, 1243.322 278.240, 1249.795 280.446 C 1257.557 283.091, 1258 282.855, 1258 276.079 C 1258 270.384, 1257.892 270.135, 1255.151 269.533 C 1252.224 268.890, 1247.105 264.187, 1245.120 260.316 C 1244.504 259.114, 1244 253.893, 1244 248.714 C 1244 240.566, 1244.308 238.837, 1246.283 235.898 C 1248.181 233.073, 1249.270 232.448, 1252.744 232.194 C 1261.192 231.577, 1264 235.993, 1264 249.901 L 1264 259 1270.500 259 L 1277 259 1277 250.565 C 1277 237.639, 1280.073 232, 1287.119 232 C 1294.441 232, 1297.950 237.829, 1297.954 250 C 1297.957 258.717, 1292.663 267.518, 1286.250 269.455 C 1284.239 270.063, 1284 270.778, 1284 276.192 L 1284 282.250 1287.080 281.634 C 1295.849 279.880, 1305.307 271.097, 1309.032 261.247 C 1310.858 256.419, 1311.131 254.061, 1310.739 246.500 C 1310.211 236.304, 1308.391 231.042, 1303.727 226.223 C 1300.311 222.694, 1293.034 219.985, 1287.068 220.022 C 1282.658 220.049, 1276.255 222.915, 1273.209 226.227 L 1270.917 228.717 1267.648 225.448 C 1264.192 221.992, 1257.302 219.518, 1253.277 220.287 L 1250.893 220.743 1253.026 218.472 C 1257.749 213.445, 1274.916 208.132, 1286.750 208.035 L 1291 208 1291 202 L 1291 196 1285.250 196.090 C 1282.088 196.140, 1276.152 196.786, 1272.060 197.527 M 1333.500 197.881 C 1328.572 200.144, 1326.721 202.174, 1323.788 208.537 C 1321.695 213.077, 1321.506 214.862, 1321.566 229.500 C 1321.622 243.388, 1321.920 246.281, 1323.820 251.419 C 1331.436 272.017, 1347.006 281.946, 1371.750 281.985 L 1381 282 1381 275.628 L 1381 269.257 1370.250 268.738 C 1363.938 268.433, 1357.541 267.516, 1354.756 266.517 C 1347.851 264.041, 1340.881 257.322, 1337.415 249.800 C 1334.667 243.836, 1334.512 242.780, 1334.506 230 C 1334.502 221.072, 1334.946 215.445, 1335.816 213.384 C 1338.376 207.322, 1345.258 206.412, 1348.709 211.679 C 1350.037 213.706, 1350.598 217.530, 1351.101 227.996 C 1351.623 238.844, 1352.207 242.679, 1353.928 246.571 C 1358.069 255.931, 1364.151 260, 1374 260 C 1383.845 260, 1389.816 256.005, 1394.199 246.488 C 1396.235 242.067, 1396.496 239.965, 1396.498 228 C 1396.500 212.882, 1395.542 208.826, 1390.653 203.257 C 1382.844 194.364, 1367.433 193.392, 1360.113 201.332 L 1357.726 203.921 1355.775 201.440 C 1354.701 200.076, 1352.535 198.294, 1350.961 197.480 C 1347.037 195.451, 1338.358 195.650, 1333.500 197.881 M 1422.314 198.434 C 1416.244 201.260, 1412.945 205.691, 1410.476 214.334 C 1409.089 219.190, 1408.869 223.882, 1409.164 242.334 C 1409.507 263.788, 1409.603 264.680, 1412.138 270.107 C 1414.845 275.900, 1419.525 280.352, 1424.110 281.495 C 1426.440 282.077, 1426.789 281.803, 1427.360 278.948 C 1428.465 273.426, 1428.075 271.166, 1425.589 268.680 C 1422.341 265.432, 1421.762 259.893, 1422.168 236 C 1422.439 220.089, 1422.808 215.938, 1424.175 213.445 C 1427.026 208.244, 1434.235 206.375, 1438.883 209.631 C 1443.346 212.756, 1444 216.419, 1443.994 238.218 C 1443.988 260.152, 1443.247 264.940, 1439.290 268.607 C 1437.043 270.689, 1436.800 271.562, 1437.227 276.006 C 1437.493 278.777, 1437.971 281.304, 1438.288 281.622 C 1439.661 282.995, 1446.255 279.520, 1449.524 275.701 C 1455.782 268.389, 1457.336 260.876, 1457.424 237.500 C 1457.512 213.930, 1456.373 208.373, 1450.187 202.187 C 1443.597 195.597, 1431.815 194.011, 1422.314 198.434 M 1369.321 209.189 C 1365.674 210.952, 1364.500 215.533, 1364.500 228 C 1364.500 244.193, 1366.391 248, 1374.434 248 C 1381.198 248, 1383.993 242.293, 1383.983 228.500 C 1383.976 217.409, 1383.144 213.417, 1380.234 210.507 C 1377.547 207.820, 1373.231 207.298, 1369.321 209.189"/></defs><use class="lw" href="#lwp"/><use class="lw-fill" href="#lwp"/></svg>
+    <div class="lbar"><i></i></div>
+  </div>
+
+  <!-- Category icons, traced from the order page's hero artwork. Stroke-only, 48×48. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-bag" viewBox="0 0 48 48"><path d="M9 15 H39 L41.5 43 A3 3 0 0 1 38.5 46 H9.5 A3 3 0 0 1 6.5 43 Z" /><path d="M17 15 V11 A7 7 0 0 1 31 11 V15" /></symbol>
+      <symbol id="i-hanger" viewBox="0 0 48 48"><path d="M24 26 V21 A5 5 0 1 1 29 16" /><path d="M24 26 L7 38 A2.5 2.5 0 0 0 8.5 42.5 H39.5 A2.5 2.5 0 0 0 41 38 Z" /></symbol>
+      <symbol id="i-cart" viewBox="0 0 48 48"><path d="M5 9 H11 L16.5 33 H38 L43 17 H13.5" /><circle cx="20" cy="41" r="3" /><circle cx="36" cy="41" r="3" /></symbol>
+      <symbol id="i-beauty" viewBox="0 0 48 48"><path d="M14 44 H26 V26 H14 Z" /><path d="M16 26 V16 A2 2 0 0 1 18 14 H22 A2 2 0 0 1 24 16 V26" /><path d="M32 44 H42 V30 A5 5 0 0 0 39 25 V20 H35 V25 A5 5 0 0 0 32 30 Z" /></symbol>
+      <symbol id="i-fuel" viewBox="0 0 48 48"><path d="M9 12 A3 3 0 0 1 12 9 H28 A3 3 0 0 1 31 12 V44 H9 Z" /><path d="M14 15 H26 V23 H14 Z" /><path d="M31 21 H36 A3 3 0 0 1 39 24 V35 A3 3 0 0 0 45 35 V25" /><path d="M6 44 H34" /></symbol>
+      <symbol id="i-ticket" viewBox="0 0 48 48"><path d="M7 17 H43 V24 A4 4 0 0 0 43 32 V39 H7 V32 A4 4 0 0 0 7 24 Z" /><path d="M25 21 V35" stroke-dasharray="3 3" /></symbol>
+      <symbol id="i-store" viewBox="0 0 48 48"><path d="M6 20 H44 V42 A2 2 0 0 1 42 44 H8 A2 2 0 0 1 6 42 Z" /><path d="M6 20 L10 11 H42 L44 20 Z" /><path d="M18 11 L14 20 M28 11 L24 20 M38 11 L34 20" /></symbol>
+      <symbol id="i-food" viewBox="0 0 48 48"><path d="M13 6 V16 A5 5 0 0 0 18 21 V43" /><path d="M23 6 V16 A5 5 0 0 1 18 21" /><path d="M18 6 V16" /><path d="M34 22 C29 22 27 18 27 14 A7 8 0 0 1 41 14 C41 18 39 22 34 22 Z" /><path d="M34 22 V43" /></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12 H19 M13 6 L19 12 L13 18" /></symbol>
+    </defs>
+  </svg>
+
+  <div class="progress" aria-hidden="true"></div>
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="საჩუქარდი — მთავარი" data-i18n-attr="aria-label:nav.home">
+      <img src="/images/sachukardi-wordmark.svg" alt="საჩუქარდი" width="148" height="24" />
+    </a>
+    <nav class="nav__links" aria-label="მთავარი ნავიგაცია" data-i18n-attr="aria-label:nav.aria">
+      <a href="#steps" data-i18n="nav.why">რატომ საჩუქარდი</a>
+      <a href="#how" data-i18n="nav.how">როგორ მუშაობს</a>
+      <a href="#where" data-i18n="nav.where">სად გამოვიყენო</a>
+    </nav>
+    <div class="nav__end">
+      <div class="lang" role="group" aria-label="ენის არჩევა" data-i18n-attr="aria-label:lang.aria">
+        <button type="button" class="lang__btn is-active" data-set-lang="ka" aria-pressed="true" lang="ka">ქარ</button>
+        <button type="button" class="lang__btn" data-set-lang="en" aria-pressed="false" lang="en">ENG</button>
+      </div>
+      <a class="btn btn--sm" data-order data-magnetic href="#">
+        <span data-i18n="nav.order">შეუკვეთე</span>
+        <svg class="btn__icon"><use href="#i-arrow" /></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO -->
+    <section class="hero" id="top">
+      <div class="hero__text">
+        <p class="eyebrow reveal-load"><span class="dot"></span><span data-i18n="hero.eyebrow">უნივერსალური სასაჩუქრე ბარათი</span></p>
+        <h1 class="hero__title">
+          <span class="line" data-split data-i18n="hero.title1">ᲨᲔᲣᲙᲕᲔᲗᲔ</span>
+          <span class="line line--green" data-split data-i18n="hero.title2">ᲡᲐᲩᲣᲥᲐᲠᲓᲘ</span>
+        </h1>
+        <p class="hero__lead reveal-load" data-i18n="hero.lead">
+          შეუკვეთე ონლაინ და აჩუქე შესაძლებლობა — შეიძინოს რაც უნდა და სადაც უნდა.
+        </p>
+        <div class="hero__cta reveal-load">
+          <a class="btn" data-order data-magnetic href="#">
+            <span data-i18n="hero.order">შეუკვეთე ახლავე</span>
+            <svg class="btn__icon"><use href="#i-arrow" /></svg>
+          </a>
+          <a class="btn btn--ghost" href="#how" data-i18n="hero.how">როგორ მუშაობს</a>
+        </div>
+      </div>
+      <a class="scroll-hint reveal-load" href="#slogan" aria-hidden="true" tabindex="-1">
+        <span class="scroll-hint__mouse"><i></i></span>
+        <span data-i18n="hero.scroll">ჩამოსქროლე</span>
+      </a>
+    </section>
+
+    <!-- 2. SLOGAN (pinned, words light up as you scroll) -->
+    <section class="slogan" id="slogan">
+      <div class="slogan__inner">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="slogan.eyebrow">საჩუქარდი</span></p>
+        <h2 class="slogan__big" data-words data-i18n="slogan.big">ყველაფრისთვის, რისი ყიდვაც გინდა</h2>
+      </div>
+    </section>
+
+    <!-- 3. STEPS (pinned, the card flips per step) -->
+    <section class="steps" id="steps">
+      <div class="steps__inner">
+        <div class="steps__stage" aria-hidden="true"></div>
+        <div class="steps__content">
+          <div class="steps__counter">
+            <span class="steps__num"><span class="steps__num-roll">
+              <span>01</span><span>02</span><span>03</span>
+            </span></span>
+            <span class="steps__total">/ 03</span>
+          </div>
+          <div class="steps__list">
+            <article class="step is-active">
+              <h3 data-i18n="step1.title">შეუკვეთე ონლაინ</h3>
+              <p data-i18n="step1.text">აირჩიე თანხა, შეავსე რამდენიმე ველი და გადაიხადე ონლაინ — რიგების და ლოდინის გარეშე.</p>
+            </article>
+            <article class="step">
+              <h3 data-i18n="step2.title">აჩუქე შესაძლებლობა</h3>
+              <p data-i18n="step2.text">გაუგზავნე საჩუქარდი მხოლოდ მობილურის ნომრით — ადრესატი ბარათის ბმულს SMS-ით მომენტალურად მიიღებს.</p>
+            </article>
+            <article class="step">
+              <h3 data-i18n="step3.title">შეიძინოს რაც უნდა და სადაც უნდა</h3>
+              <p data-i18n="step3.text">ერთი ბარათი — ტანსაცმელი, ტექნიკა, რესტორანი თუ მოგზაურობა. არჩევანი მთლიანად მის ხელშია.</p>
+            </article>
+          </div>
+          <div class="steps__bar"><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. HOW IT WORKS (pinned horizontal track) -->
+    <section class="how" id="how">
+      <div class="how__head">
+        <p class="eyebrow"><span class="dot"></span><span data-i18n="how.eyebrow">როგორ მუშაობს</span></p>
+        <h2 class="h2" data-i18n-html="how.title">საჩუქარი <span class="green">4 ნაბიჯში</span></h2>
+      </div>
+      <div class="how__track">
+        <article class="panel">
+          <span class="panel__num">01</span>
+          <div class="panel__mock mock-amounts" aria-hidden="true">
+            <span>50 ₾</span><span>100 ₾</span><span class="is-on">200 ₾</span><span>500 ₾</span>
+            <div class="mock-amounts__field"><span data-i18n="how1.mock">სხვა თანხა</span><b>₾</b></div>
+          </div>
+          <h3 data-i18n="how1.title">აირჩიე თანხა</h3>
+          <p data-i18n="how1.text">ნებისმიერი თანხა 3 000 ₾-მდე — შენ წყვეტ, რამდენად დიდი იქნება საჩუქარი.</p>
+        </article>
+        <article class="panel">
+          <span class="panel__num">02</span>
+          <div class="panel__mock mock-phone" aria-hidden="true">
+            <div class="mock-toggle"><span data-i18n="how2.self">ჩემთვის</span><span class="is-on" data-i18n="how2.gift">საჩუქრად</span></div>
+            <div class="mock-input"><b>+995</b><span class="mock-typed">5•• •• •• ••</span></div>
+          </div>
+          <h3 data-i18n="how2.title">მიუთითე ადრესატი</h3>
+          <p data-i18n="how2.text">ჩემთვის თუ საჩუქრად — საკმარისია მხოლოდ მობილურის ნომერი.</p>
+        </article>
+        <article class="panel">
+          <span class="panel__num">03</span>
+          <div class="panel__mock mock-pay" aria-hidden="true">
+            <div class="mock-pay__opt is-on"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2" /><path d="M3 10 H21" /></svg><span data-i18n="how3.card">ბარათით</span></div>
+            <div class="mock-pay__opt"><svg viewBox="0 0 24 24"><path d="M4 10 L12 5 L20 10 M6 10 V17 M10 10 V17 M14 10 V17 M18 10 V17 M4 19 H20" /></svg><span data-i18n="how3.transfer">გადარიცხვით</span></div>
+          </div>
+          <h3 data-i18n="how3.title">გადაიხადე ონლაინ</h3>
+          <p data-i18n="how3.text">ბარათით ან საბანკო გადარიცხვით — სწრაფად და უსაფრთხოდ.</p>
+        </article>
+        <article class="panel panel--accent">
+          <span class="panel__num">04</span>
+          <div class="panel__mock mock-sms" aria-hidden="true">
+            <div class="mock-sms__bubble" data-i18n-html="how4.sms">
+              <b>საჩუქარდი</b>შენ მიიღე სასაჩუქრე ბარათი 🎁<br /><u>link.payunicard.ge/•••</u>
+            </div>
+            <span class="mock-sms__time" data-i18n="how4.time">ახლახან</span>
+          </div>
+          <h3 data-i18n="how4.title">SMS მომენტალურად</h3>
+          <p data-i18n="how4.text">ადრესატი ბარათის ბმულს SMS-ით მაშინვე იღებს — საჩუქარი უკვე მის ხელშია.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. WHERE (velocity-reactive marquee) -->
+    <section class="where" id="where">
+      <div class="where__head">
+        <p class="eyebrow reveal"><span class="dot"></span><span data-i18n="where.eyebrow">სად გამოვიყენო</span></p>
+        <h2 class="h2 reveal" data-i18n-html="where.title">შეიძინოს <span class="green">რაც უნდა</span><br />და <span class="green">სადაც უნდა</span></h2>
+      </div>
+      <div class="marquee" data-dir="1">
+        <div class="marquee__track">
+          <span class="chip"><svg><use href="#i-bag" /></svg><span data-i18n="cat.shopping">შოპინგი</span></span>
+          <span class="chip"><svg><use href="#i-hanger" /></svg><span data-i18n="cat.clothing">ტანსაცმელი</span></span>
+          <span class="chip"><svg><use href="#i-cart" /></svg><span data-i18n="cat.grocery">სუპერმარკეტი</span></span>
+          <span class="chip"><svg><use href="#i-beauty" /></svg><span data-i18n="cat.beauty">კოსმეტიკა</span></span>
+          <span class="chip"><svg><use href="#i-fuel" /></svg><span data-i18n="cat.fuel">საწვავი</span></span>
+          <span class="chip"><svg><use href="#i-ticket" /></svg><span data-i18n="cat.events">კინო და ღონისძიებები</span></span>
+          <span class="chip"><svg><use href="#i-store" /></svg><span data-i18n="cat.malls">სავაჭრო ცენტრები</span></span>
+          <span class="chip"><svg><use href="#i-food" /></svg><span data-i18n="cat.food">რესტორნები</span></span>
+        </div>
+      </div>
+      <div class="marquee marquee--outline" data-dir="-1">
+        <div class="marquee__track">
+          <span class="word" data-i18n="band.1">ყველაფრისთვის</span><span class="star">✦</span>
+          <span class="word" data-i18n="band.2">რისი ყიდვაც გინდა</span><span class="star">✦</span>
+          <span class="word" data-i18n="band.3">აჩუქე შესაძლებლობა</span><span class="star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. STATS -->
+    <section class="stats">
+      <div class="stat reveal">
+        <b><span data-count="3000">0</span> ₾</b>
+        <span data-i18n="stat1">მაქსიმალური თანხა ერთ ბარათზე</span>
+      </div>
+      <div class="stat reveal">
+        <b><span data-count="1">0</span> SMS</b>
+        <span data-i18n="stat2">და ბარათი უკვე ადრესატთანაა</span>
+      </div>
+      <div class="stat reveal">
+        <b><span data-count="100">0</span>%</b>
+        <span data-i18n="stat3">ონლაინ — ფილიალში მისვლის გარეშე</span>
+      </div>
+    </section>
+
+    <!-- 7. FINAL CTA (the card comes back) -->
+    <section class="cta" id="order">
+      <div class="cta__stage" aria-hidden="true"></div>
+      <div class="cta__content">
+        <h2 class="cta__title">
+          <span class="line" data-split data-i18n="hero.title1">ᲨᲔᲣᲙᲕᲔᲗᲔ</span>
+          <span class="line line--green" data-split data-i18n="hero.title2">ᲡᲐᲩᲣᲥᲐᲠᲓᲘ</span>
+        </h2>
+        <p class="cta__sub reveal" data-i18n="cta.sub">უნივერსალური სასაჩუქრე ბარათი — ყველაფრისთვის, რისი ყიდვაც გინდა.</p>
+        <a class="btn btn--xl reveal" data-order data-magnetic href="#">
+          <span data-i18n="cta.order">შეუკვეთე ონლაინ</span>
+          <svg class="btn__icon"><use href="#i-arrow" /></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="footer__brand" href="https://payunicard.ge/" target="_blank" rel="noopener">
+      <img src="/images/payunicard.svg" alt="PayUnicard" width="92" height="49" />
+    </a>
+    <p>© <span data-year>2026</span> PayUnicard. <span data-i18n="footer.rights">ყველა უფლება დაცულია.</span></p>
+    <a class="footer__link" data-order href="#" data-i18n="footer.order">შეკვეთა</a>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
