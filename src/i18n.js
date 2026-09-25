@@ -31,7 +31,6 @@ const dict = {
     'hero.how': 'როგორ მუშაობს',
     'hero.scroll': 'ჩამოსქროლე',
 
-    'slogan.eyebrow': 'საჩუქარდი',
     'slogan.big': 'ყველაფრისთვის, რისი ყიდვაც გინდა',
 
     'step1.title': 'შეუკვეთე ონლაინ',
@@ -105,7 +104,6 @@ const dict = {
     'hero.how': 'How it works',
     'hero.scroll': 'Scroll',
 
-    'slogan.eyebrow': 'Sachukardi',
     'slogan.big': 'For everything you want to buy',
 
     'step1.title': 'Order online',
