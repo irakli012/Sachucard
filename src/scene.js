@@ -440,5 +440,12 @@ export function createScene(canvas, { cardUrl, wordmarkUrl, backLines, reducedMo
     .then(() => renderer.compileAsync?.(scene, camera))
     .catch(() => {});
 
-  return { setKeyframes, intro, ready };
+  // Jump straight to the pose for the current scroll position (after an
+  // instant scroll), skipping the usual easing.
+  function snap() {
+    poseAt(window.scrollY);
+    Object.assign(cur, target);
+  }
+
+  return { setKeyframes, intro, ready, snap };
 }

@@ -83,6 +83,16 @@ h1, h2, h3, p { margin: 0; }
   75% { transform: translate(-2%, -1%); }
 }
 
+/* Covers the page during long in-page jumps (see jumpTo in main.js). */
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 35; /* above content, below the nav (40) */
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Top progress bar — a native CSS scroll-driven animation. */
 .progress {
   position: fixed;

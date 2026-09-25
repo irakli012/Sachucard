@@ -26,7 +26,7 @@ document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new 
 /* ---------- smooth scroll ---------- */
 let lenis = null;
 if (!reducedMotion) {
-  lenis = new Lenis({ lerp: 0.1, anchors: true });
+  lenis = new Lenis({ lerp: 0.1 });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
@@ -122,6 +122,63 @@ Promise.race([
 ])
   .then(() => { ScrollTrigger.refresh(); return hideLoader(); })
   .then(() => introTl?.play());
+
+/* ---------- in-page links ----------
+   A smooth scroll across several sections would fast-forward every pinned
+   and scrubbed animation on the way, which looks frantic. Long jumps instead
+   fade the page out, move instantly, settle every animation at its
+   destination and fade back in. Short hops still scroll smoothly. */
+const veil = document.createElement('div');
+veil.className = 'veil';
+document.body.appendChild(veil);
+
+function targetY(hash) {
+  if (hash === '#top') return 0;
+  const el = document.querySelector(hash);
+  if (!el) return null;
+  // a pinned section lives inside its pin spacer; measure the spacer
+  const box = el.parentElement?.classList.contains('pin-spacer') ? el.parentElement : el;
+  return Math.min(box.getBoundingClientRect().top + window.scrollY, ScrollTrigger.maxScroll(window));
+}
+
+function settleAnimations() {
+  ScrollTrigger.update();
+  ScrollTrigger.getAll().forEach((st) => st.getTween?.()?.progress(1));
+  scene.snap();
+}
+
+let jumping = false;
+function jumpTo(y) {
+  if (jumping) return;
+  if (reducedMotion || !lenis) {
+    window.scrollTo(0, y);
+    settleAnimations();
+    return;
+  }
+  if (Math.abs(y - window.scrollY) < window.innerHeight * 1.2) {
+    lenis.scrollTo(y, { duration: 1.1 });
+    return;
+  }
+  jumping = true;
+  gsap.timeline({ onComplete: () => { jumping = false; } })
+    .to(veil, { opacity: 1, duration: 0.3, ease: 'power2.in' })
+    .add(() => {
+      lenis.scrollTo(y, { immediate: true, force: true });
+      settleAnimations();
+    })
+    .to(veil, { opacity: 0, duration: 0.5, ease: 'power2.out' }, '+=0.08');
+}
+
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  const hash = a.getAttribute('href');
+  if (hash.length < 2) return; // placeholder hrefs (order buttons) are replaced above
+  a.addEventListener('click', (e) => {
+    const y = targetY(hash);
+    if (y === null) return;
+    e.preventDefault();
+    jumpTo(y);
+  });
+});
 
 /* ---------- language switch ----------
    Reloads into the other language (behind the loading screen) rather than
