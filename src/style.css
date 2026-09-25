@@ -271,6 +271,9 @@ main, .footer { position: relative; z-index: 1; }
   display: flex;
   align-items: center;
   padding: 120px var(--gutter) 80px;
+  /* on wide screens, ease the text in from the window edge: halfway between
+     the gutter and the nav logo (e.g. 227px at 1900 wide, gutter below 1280) */
+  padding-left: max(var(--gutter), calc(25vw - 248px));
 }
 .hero__text { max-width: min(640px, 52vw); }
 .hero__title {

@@ -320,6 +320,7 @@ if (window.matchMedia('(pointer: fine)').matches && !reducedMotion) {
    ScrollTrigger re-measures (resize, font load, …). */
 const ctaEnter = ScrollTrigger.create({ trigger: '#order', start: 'top bottom' });
 const ctaStage = document.querySelector('.cta__stage');
+const heroText = document.querySelector('.hero__text');
 
 function buildFrames() {
   const mobile = window.innerWidth < 900;
@@ -328,6 +329,16 @@ function buildFrames() {
   const at = (st, p = 0) => st.start + (st.end - st.start) * p;
   const max = ScrollTrigger.maxScroll(window);
   const fit = mobile ? { fitW: 0.66, fitH: 0.26 } : { fitW: 0.36, fitH: 0.5 };
+
+  // Desktop hero: the card sits in the space right of the text column,
+  // which runs to halfway into the right margin, and keeps at least an 80px
+  // gap from the headline (shrinking on very wide screens if it must).
+  const contentL = heroText.offsetLeft;
+  const textR = contentL + heroText.offsetWidth;
+  const spaceR = vw - contentL / 2;
+  const cardW = Math.min(fit.fitW * vw, fit.fitH * vh * 1.586); // card width at s = 1
+  const heroX = ((textR + spaceR) / 2 + 30 - vw / 2) / (vw / 2);
+  const heroS = Math.min(1, (spaceR - textR - 80) / cardW);
 
   // Where the final section's empty stage sits on screen once the page is
   // fully scrolled; the card lands in the middle of it, sized to fit.
@@ -357,7 +368,7 @@ function buildFrames() {
       at: 0,
       pose: mobile
         ? { x: 0, y: 0.47, rx: 0.16, ry: -0.3, rz: 0.08, s: 1, ring: 1 }
-        : { x: 0.48, y: 0.02, rx: 0.12, ry: -0.5, rz: 0.14, s: 1, ring: 1 },
+        : { x: heroX, y: 0.02, rx: 0.12, ry: -0.5, rz: 0.14, s: heroS, ring: 1 },
     },
     // slogan: card slips behind the words, showing its back (which carries the slogan)
     {
