@@ -288,14 +288,12 @@ main, .footer { position: relative; z-index: 1; }
 .hero__text { max-width: min(640px, 52vw); }
 .hero__title {
   margin: 0 0 24px;
-  /* the longest line (ᲡᲐᲩᲣᲥᲐᲠᲓᲘ) is ~6.7em wide; this keeps it inside the 52vw / 640px column */
-  font-size: clamp(40px, 6.4vw, 92px);
+  /* the longest line ("რისი ყიდვაც გინდა") is ~11em wide; this keeps it inside the 52vw / 640px column */
+  font-size: clamp(28px, 4.3vw, 56px);
   font-weight: 900;
-  line-height: .98;
+  line-height: 1.14;
   letter-spacing: .01em;
 }
-/* Latin "SACHUKARDI" runs ~7.3em, wider than the Georgian ~6.7em */
-:lang(en) .hero__title { font-size: clamp(38px, 5.8vw, 84px); }
 .line--green { color: var(--green); text-shadow: 0 0 60px rgba(var(--green-rgb), .35); }
 .hero__lead {
   max-width: 480px;
@@ -679,6 +677,11 @@ main, .footer { position: relative; z-index: 1; }
 
 /* ---------- responsive ---------- */
 
+/* the three nav links need ~1000px beside the logo, language switch and button */
+@media (max-width: 999px) {
+  .nav__links { display: none; }
+}
+
 @media (max-width: 899px) {
   .nav { padding-left: 18px; gap: 12px; }
   .nav__links { display: none; }
@@ -692,7 +695,7 @@ main, .footer { position: relative; z-index: 1; }
     text-align: center;
   }
   .hero__text { max-width: none; display: flex; flex-direction: column; align-items: center; margin: 0 auto; }
-  .hero__title { margin: 0 0 16px; }
+  .hero__title { margin: 0 0 16px; font-size: 7.7vw; }
   .hero__cta { justify-content: center; margin-top: 28px; }
   .scroll-hint { display: none; }
 
@@ -703,6 +706,11 @@ main, .footer { position: relative; z-index: 1; }
   .panel { width: 80vw; min-height: 440px; }
   .stats { grid-template-columns: 1fr; }
   .footer { justify-content: center; text-align: center; }
+}
+
+/* short phones: less room reserved for the card so step text + progress bar fit */
+@media (max-width: 899px) and (max-height: 640px) {
+  .steps__stage { min-height: 34vh; }
 }
 
 @media (max-width: 420px) {
