@@ -40,7 +40,7 @@ const dict = {
     'step2.title': 'აჩუქე შესაძლებლობა',
     'step2.text': 'გაუგზავნე საჩუქარდი მხოლოდ მობილურის ნომრით - ადრესატი ბარათის ბმულს SMS-ით მომენტალურად მიიღებს.',
     'step3.title': 'აჩუქე გამოყენების რეალური თავისუფლება',
-    'step3.text': 'ბარათის მფლობელს გადახდა შეუძლია, ნებისმიერ სავაჭრო ან მომსახურების ობიექტში, სადაც განთავსებულია POS ტერმინალი.',
+    'step3.text': 'ბარათის მფლობელს გადახდა შეუძლია ნებისმიერ სავაჭრო ან მომსახურების ობიექტში, სადაც განთავსებულია POS ტერმინალი.',
 
     'how.eyebrow': 'როგორ მუშაობს',
     'how.title': 'საჩუქარი <span class="green">4 ნაბიჯში</span>',
@@ -61,7 +61,7 @@ const dict = {
     'how4.text': 'ადრესატი ბარათის ბმულს SMS-ით მაშინვე მიიღებს - საჩუქარი უკვე მის ხელშია.',
 
     'where.eyebrow': 'სად გამოვიყენო',
-    'where.title': 'შეიძინოს <span class="green">რაც უნდა</span><br />და <span class="green">სადაც უნდა</span>',
+    'where.title': 'ერთი სასაჩუქრე ბარათი<br /><span class="green">ყველგან გადახდის შესაძლებლობა</span>',
     'cat.shopping': 'შოპინგი',
     'cat.clothing': 'ტანსაცმელი',
     'cat.grocery': 'სუპერმარკეტი',
@@ -136,7 +136,7 @@ const dict = {
     'how4.text': 'The recipient gets the card link by SMS right away - the gift is already in their hands.',
 
     'where.eyebrow': 'Where to use',
-    'where.title': 'Buy <span class="green">whatever</span> they want,<br /><span class="green">wherever</span> they want',
+    'where.title': 'One gift card,<br /><span class="green">pay anywhere</span>',
     'cat.shopping': 'Shopping',
     'cat.clothing': 'Clothing',
     'cat.grocery': 'Supermarkets',
