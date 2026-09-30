@@ -8,13 +8,14 @@
   <meta name="theme-color" content="#10131F" />
   <meta property="og:title" content="საჩუქარდი - უნივერსალური სასაჩუქრე ბარათი" />
   <meta property="og:description" content="ყველაფრისთვის, რისი ყიდვაც გინდა." />
-  <meta property="og:image" content="/images/card-face.png" />
+  <meta property="og:image" content="https://media.payunicard.ge/sachukardi/website/images/card.png" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="preload" href="/fonts/HMpangram-Black.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/HMpangram-Medium.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/HMpangram-Bold.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/HMpangram-Light.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/images/card-face.png" as="image" />
+  <link rel="preconnect" href="https://media.payunicard.ge" crossorigin />
+  <link rel="preload" href="https://media.payunicard.ge/sachukardi/website/images/card.png" as="image" crossorigin="anonymous" />
 
   <!-- Loading screen. Inlined so it paints on the very first frame, before the
        stylesheet, fonts or scripts arrive. main.js removes it once the fonts
@@ -74,7 +75,7 @@
 
   <header class="nav" id="nav">
     <a class="nav__brand" href="#top" aria-label="საჩუქარდი - მთავარი" data-i18n-attr="aria-label:nav.home">
-      <img src="/images/sachukardi-wordmark.svg" alt="საჩუქარდი" width="148" height="24" />
+      <img src="https://media.payunicard.ge/sachukardi/website/images/wordmark.svg" onerror="this.onerror=null;this.src='/images/sachukardi-wordmark.svg'" alt="საჩუქარდი" width="148" height="24" />
     </a>
     <nav class="nav__links" aria-label="მთავარი ნავიგაცია" data-i18n-attr="aria-label:nav.aria">
       <a href="#steps" data-i18n="nav.why">რატომ საჩუქარდი</a>
@@ -265,7 +266,7 @@
 
   <footer class="footer">
     <a class="footer__brand" href="https://payunicard.ge/" target="_blank" rel="noopener">
-      <img src="/images/payunicard.svg" alt="PayUnicard" width="92" height="49" />
+      <img src="https://media.payunicard.ge/sachukardi/website/images/payunicard-logo.svg" onerror="this.onerror=null;this.src='/images/payunicard.svg'" alt="PayUnicard" width="92" height="49" />
     </a>
     <p>© <span data-year>2026</span> PayUnicard. <span data-i18n="footer.rights">ყველა უფლება დაცულია.</span></p>
     <a class="footer__link" data-order href="#" data-i18n="footer.order">შეკვეთა</a>

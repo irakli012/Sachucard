@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import { createScene } from './scene.js';
+import { MEDIA } from './media.js';
 import { detectLang, applyLang, saveLang, t } from './i18n.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -53,8 +54,8 @@ document.documentElement.classList.add('split-ready');
 
 /* ---------- 3D scene ---------- */
 const scene = createScene(document.getElementById('scene'), {
-  cardUrl: '/images/card-face.png',
-  wordmarkUrl: '/images/sachukardi-wordmark.svg',
+  cardMedia: MEDIA.card,
+  wordmarkMedia: MEDIA.wordmark,
   backLines: [t(lang, 'card.back1'), t(lang, 'card.back2')],
   reducedMotion,
 });

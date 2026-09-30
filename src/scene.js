@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { loadImage } from './media.js';
 
 /*
   The 3D card lives on one fixed, full-screen canvas behind the page.
@@ -48,7 +49,7 @@ function faceGeometry(shape) {
 }
 
 /* Back of the card, painted at runtime so it can use the site font. */
-async function backTexture(wordmarkUrl, [line1, line2]) {
+async function backTexture(wordmark, [line1, line2]) {
   const W = 1536, H = 969;
   const c = document.createElement('canvas');
   c.width = W; c.height = H;
@@ -96,9 +97,7 @@ async function backTexture(wordmarkUrl, [line1, line2]) {
   g.fillRect(0, 230, W, H - 230);
 
   try {
-    const img = new Image();
-    img.src = wordmarkUrl;
-    await img.decode();
+    const img = await loadImage(wordmark);
     const w = 620, h = (w * img.naturalHeight) / img.naturalWidth;
     g.drawImage(img, (W - w) / 2, 470 - h / 2, w, h);
   } catch { /* wordmark is decoration; the card still works without it */ }
@@ -170,7 +169,7 @@ function shineMaterial() {
   });
 }
 
-export function createScene(canvas, { cardUrl, wordmarkUrl, backLines, reducedMotion }) {
+export function createScene(canvas, { cardMedia, wordmarkMedia, backLines, reducedMotion }) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -197,10 +196,11 @@ export function createScene(canvas, { cardUrl, wordmarkUrl, backLines, reducedMo
   const bevel = 0.006;
   const faceZ = CARD_D / 2 + bevel + 0.0006;
 
-  const loader = new THREE.TextureLoader();
-  let frontLoaded;
-  const frontReady = new Promise((resolve) => { frontLoaded = resolve; });
-  const frontMap = loader.load(cardUrl, () => frontLoaded(), undefined, () => frontLoaded());
+  // card artwork from the media CDN (local copy if the CDN is down)
+  const frontMap = new THREE.Texture();
+  const frontReady = loadImage(cardMedia)
+    .then((img) => { frontMap.image = img; frontMap.needsUpdate = true; })
+    .catch(() => {});
   frontMap.colorSpace = THREE.SRGBColorSpace;
   frontMap.anisotropy = renderer.capabilities.getMaxAnisotropy();
 
@@ -228,7 +228,7 @@ export function createScene(canvas, { cardUrl, wordmarkUrl, backLines, reducedMo
   backGeo.rotateY(Math.PI);
   const back = new THREE.Mesh(backGeo, backMat);
   back.position.z = -faceZ;
-  const backReady = backTexture(wordmarkUrl, backLines).then((t) => {
+  const backReady = backTexture(wordmarkMedia, backLines).then((t) => {
     t.anisotropy = renderer.capabilities.getMaxAnisotropy();
     backMat.map = t;
     backMat.color.set('#ffffff');
