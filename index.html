@@ -84,6 +84,7 @@
       <a href="#steps" data-i18n="nav.why">რატომ საჩუქარდი</a>
       <a href="#how" data-i18n="nav.how">როგორ მუშაობს</a>
       <a href="#where" data-i18n="nav.where">სად გამოვიყენო</a>
+      <button type="button" data-about data-i18n="nav.about">რა არის საჩუქარდი</button>
     </nav>
     <div class="nav__end">
       <div class="lang" role="group" aria-label="ენის არჩევა" data-i18n-attr="aria-label:lang.aria">
@@ -115,6 +116,8 @@
           </a>
           <a class="btn btn--ghost" href="#how" data-i18n="hero.how">როგორ მუშაობს</a>
         </div>
+        <!-- shown where the nav links are hidden (narrow screens) -->
+        <button type="button" class="hero__about reveal-load" data-about data-i18n="about.link">რა არის საჩუქარდი?</button>
       </div>
       <a class="scroll-hint reveal-load" href="#slogan" aria-hidden="true" tabindex="-1">
         <span class="scroll-hint__mouse"><i></i></span>
@@ -266,6 +269,17 @@
       </div>
     </section>
   </main>
+
+  <!-- "What is Sachukardi" modal (native <dialog>: focus trap and Esc for free) -->
+  <dialog class="about" id="about" aria-labelledby="about-title">
+    <div class="about__card">
+      <button type="button" class="about__close" data-close aria-label="დახურვა" data-i18n-attr="aria-label:about.close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 L18 18 M18 6 L6 18" /></svg>
+      </button>
+      <h2 id="about-title" data-i18n="about.title">რა არის საჩუქარდი?</h2>
+      <p data-i18n="about.text">საჩუქარდი ფეიუნიქარდის Visa სასაჩუქრე ბარათია, რომელიც მფლობელს გამოყენების რეალურ თავისუფლებას ანიჭებს. საჩუქარდით გადახდა შესაძლებელია შეუზღუდავად, ნებისმიერ სავაჭრო ან მომსახურების სივრცეში, სადაც განთავსებულია POS ტერმინალი.</p>
+    </div>
+  </dialog>
 
   <footer class="footer">
     <a class="footer__brand" href="https://payunicard.ge/" target="_blank" rel="noopener">

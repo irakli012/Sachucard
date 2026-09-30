@@ -163,9 +163,10 @@ main, .footer { position: relative; z-index: 1; }
 .lang__btn:hover { color: var(--text); }
 .lang__btn.is-active { background: var(--surface-2); color: var(--green); }
 .lang__btn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
-.nav__links { display: flex; gap: 28px; font-size: 14px; color: var(--text-2); }
-.nav__links a { position: relative; padding: 4px 0; transition: color .2s; }
-.nav__links a::after {
+.nav__links { display: flex; gap: 24px; font-size: 14px; color: var(--text-2); white-space: nowrap; }
+.nav__links a, .nav__links button { position: relative; padding: 4px 0; transition: color .2s; }
+.nav__links button { border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.nav__links a::after, .nav__links button::after {
   content: '';
   position: absolute; left: 0; right: 0; bottom: 0;
   height: 1px;
@@ -174,8 +175,8 @@ main, .footer { position: relative; z-index: 1; }
   transform-origin: right;
   transition: transform .4s var(--ease-out);
 }
-.nav__links a:hover { color: var(--text); }
-.nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav__links a:hover, .nav__links button:hover { color: var(--text); }
+.nav__links a:hover::after, .nav__links button:hover::after { transform: scaleX(1); transform-origin: left; }
 
 /* ---------- buttons ---------- */
 
@@ -302,6 +303,19 @@ main, .footer { position: relative; z-index: 1; }
   font-weight: 300;
 }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+/* the "what is Sachukardi" link, only where the nav links are hidden */
+.hero__about {
+  display: none;
+  margin-top: 20px;
+  padding: 6px 2px;
+  border: 0;
+  border-bottom: 1px solid rgba(var(--green-rgb), .5);
+  background: none;
+  color: var(--text-2);
+  font: 500 15px/1.4 var(--font);
+  cursor: pointer;
+}
+.hero__about:hover { color: var(--text); border-bottom-color: var(--green); }
 
 .scroll-hint {
   position: absolute;
@@ -677,9 +691,10 @@ main, .footer { position: relative; z-index: 1; }
 
 /* ---------- responsive ---------- */
 
-/* the three nav links need ~1000px beside the logo, language switch and button */
-@media (max-width: 999px) {
+/* the four nav links need ~1160px beside the logo, language switch and button */
+@media (max-width: 1159px) {
   .nav__links { display: none; }
+  .hero__about { display: inline-block; }
 }
 
 @media (max-width: 899px) {
@@ -724,4 +739,67 @@ main, .footer { position: relative; z-index: 1; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .grain { display: none; }
   .progress { animation: none; }
+}
+
+/* ---------- "what is Sachukardi" modal ---------- */
+.about {
+  width: min(560px, calc(100% - 32px));
+  max-width: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  overflow: visible;
+}
+.about::backdrop {
+  background: rgba(8, 10, 17, .62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.about[open] { animation: about-in .5s var(--ease-out); }
+.about[open]::backdrop { animation: about-fade .35s ease; }
+@keyframes about-in { from { opacity: 0; transform: translateY(24px) scale(.97); } }
+@keyframes about-fade { from { opacity: 0; } }
+.about__card {
+  position: relative;
+  overflow: hidden;
+  padding: 44px 36px 36px;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, #1f2433, #151926);
+  border: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .55);
+}
+/* the card's green band, as on the real card */
+.about__card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: var(--green);
+}
+.about h2 {
+  margin: 0 40px 16px 0;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  font-weight: 700;
+}
+.about p { color: var(--text-2); font-weight: 300; font-size: 17px; line-height: 1.7; }
+.about__close {
+  position: absolute;
+  top: 18px; right: 18px;
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.about__close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.about__close:hover { color: var(--text); border-color: rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .05); }
+.about__close:focus-visible, .nav__links button:focus-visible, .hero__about:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+@media (max-width: 480px) {
+  .about__card { padding: 40px 22px 26px; }
+  .about p { font-size: 16px; }
 }

@@ -181,6 +181,22 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
   });
 });
 
+/* ---------- "what is Sachukardi" modal ----------
+   A native <dialog>: showModal() traps focus and closes on Esc. The page's
+   smooth scroll is paused while it's open so the wheel doesn't move the page
+   behind it. */
+const about = document.getElementById('about');
+document.querySelectorAll('[data-about]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    about.showModal();
+    lenis?.stop();
+  });
+});
+about.querySelector('[data-close]').addEventListener('click', () => about.close());
+// a click on the dimmed backdrop (outside the card) closes it
+about.addEventListener('click', (e) => { if (e.target === about) about.close(); });
+about.addEventListener('close', () => lenis?.start());
+
 /* ---------- language switch ----------
    Reloads into the other language (behind the loading screen) rather than
    swapping text in place: every split heading, pinned section and measured
