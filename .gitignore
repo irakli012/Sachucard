@@ -2,3 +2,8 @@ node_modules
 dist
 .vercel
 .claude
+ad/node_modules
+ad/out
+ad/fonts/*.otf
+ad/fonts/*.ttf
+ad/fonts/*.woff2

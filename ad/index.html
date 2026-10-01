@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sachukardi Ad 16:9</title>
+  <link rel="stylesheet" href="./ad.css" />
+</head>
+<body>
+  <!-- A fixed 1920×1080 stage. The preview scales it to fit the window; the
+       renderer (render.mjs) captures it 1:1, frame by frame. -->
+  <div id="stage">
+    <canvas id="gl"></canvas>
+
+    <!-- text moments: each has the screen to itself. Two lines: white, then
+         the key word in green on its own line (matching the approved reference). -->
+    <div class="msg m1"><div class="ln" data-words="მზად ხარ"></div><div class="ln green" data-words="ცვლილებისთვის?"></div></div>
+    <div class="msg m2"><div class="ln" data-words="ერთი სასაჩუქრე"></div><div class="ln green" data-words="ბარათი"></div></div>
+    <div class="msg m3"><div class="ln" data-words="რომლითაც ყველგან"></div><div class="ln green" data-words="გადაიხდი"></div></div>
+
+    <!-- final packshot -->
+    <div class="pack">
+      <div class="pk1" data-words="საჩუქარდი"></div>
+      <div class="pk2" data-words="ყველაფრისთვის, რისი ყიდვაც გინდა"></div>
+    </div>
+    <div class="contact"><span>www.payunicard.ge</span><i class="dot"></i><span>0322 555 222</span></div>
+
+    <div class="fade"></div>
+    <div class="black"></div>
+    <div class="vignette"></div>
+    <div class="grain"></div>
+  </div>
+
+  <div id="hud">
+    <button id="play" type="button">❚❚</button>
+    <input id="scrub" type="range" min="0" max="26.5" step="0.001" value="0" />
+    <span id="time">0.00s</span>
+  </div>
+
+  <script type="module" src="./ad.js"></script>
+</body>
+</html>

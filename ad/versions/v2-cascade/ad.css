@@ -1,0 +1,104 @@
+@font-face { font-family: 'HMPangram'; src: url('/fonts/HMpangram-Medium.woff2') format('woff2'); font-weight: 500; }
+@font-face { font-family: 'HMPangram'; src: url('/fonts/HMpangram-Bold.woff2') format('woff2'); font-weight: 700; }
+@font-face { font-family: 'HMPangram'; src: url('/fonts/HMpangram-Black.woff2') format('woff2'); font-weight: 900; }
+@font-face { font-family: 'Dachi The Lynx'; src: url('../../fonts/DachiTheLynx-Regular.otf') format('opentype'); font-weight: 400; }
+
+:root {
+  --navy: #10131F;
+  --green: #90C850;
+  --lime: #B6D639;
+  --mint: #D6F5A8;
+  --light: #EEF1F4;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #05060a; overflow: hidden; }
+
+#stage {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 1920px; height: 1080px;
+  transform-origin: 0 0;
+  overflow: hidden;
+  background: var(--navy);
+  font-family: 'HMPangram', 'Noto Sans Georgian', sans-serif;
+  color: #fff;
+}
+.render #stage { left: 0; top: 0; transform: none !important; }
+.render #hud { display: none; }
+
+#gl { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+
+/* ---------- typography (every word is driven per frame by ad.js) ---------- */
+.msg, .pack, .contact {
+  position: absolute;
+  left: 0; right: 0;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+/* a word sits in a mask; its inner span rises into view */
+.w {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.1em 0.06em 0.2em;
+  margin: -0.1em 0 -0.2em;
+  vertical-align: top;
+}
+.wi { display: inline-block; will-change: transform, opacity, filter; }
+.sp { display: inline-block; width: .3em; }
+
+/* the three messages: large, one line, centred on screen */
+.msg {
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -.005em;
+  /* shadow on the whole line: a per-word text-shadow would be clipped by the word masks */
+  filter: drop-shadow(0 8px 40px rgba(5, 8, 14, .7));
+}
+.m1 { font-size: 112px; }
+.m2 { font-size: 120px; }
+.m3 { font-size: 112px; color: var(--lime); }
+
+/* packshot: Dachi The Lynx, brand word in green, slogan subordinate */
+.pack {
+  top: 330px;
+  font-family: 'Dachi The Lynx', 'HMPangram', sans-serif;
+  font-weight: 400;
+}
+.pk1 { font-size: 176px; line-height: 1.1; color: var(--lime); filter: drop-shadow(0 0 36px rgba(182, 214, 57, .35)); }
+.pk2 { margin-top: 26px; font-size: 50px; line-height: 1.2; color: var(--light); letter-spacing: .01em; }
+
+.contact { top: 880px; font-weight: 700; line-height: 1.35; }
+.contact .url { font-size: 44px; }
+.contact .tel { font-size: 36px; font-weight: 500; color: var(--mint); letter-spacing: .06em; }
+
+/* scene-to-scene fade (envelope → packshot) */
+.fade { position: absolute; inset: 0; background: var(--navy); opacity: 0; pointer-events: none; }
+
+/* ---------- finishing layers ---------- */
+.vignette {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 95% at 50% 45%, transparent 55%, rgba(3, 4, 8, .72) 100%);
+}
+.grain {
+  position: absolute; inset: -40px;
+  pointer-events: none;
+  opacity: .07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-position: var(--gx, 0) var(--gy, 0);
+}
+
+/* ---------- preview controls ---------- */
+#hud {
+  position: fixed; left: 16px; right: 16px; bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+  font: 13px/1 system-ui, sans-serif; color: #9EA3AF;
+}
+#hud button { width: 40px; height: 30px; border: 1px solid #3A4050; border-radius: 8px; background: #1B1F2D; color: #fff; cursor: pointer; }
+#hud input { flex: 1; accent-color: var(--green); }
+#time { width: 56px; text-align: right; font-variant-numeric: tabular-nums; }

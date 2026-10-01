@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sachukardi Ad 16:9</title>
+  <link rel="stylesheet" href="./ad.css" />
+</head>
+<body>
+  <!-- A fixed 1920×1080 stage. The preview scales it to fit the window; the
+       renderer (render.mjs) captures it 1:1, frame by frame. -->
+  <div id="stage">
+    <canvas id="gl"></canvas>
+
+    <div class="txt t1" data-text="მზად ხარ ცვლილებისთვის?"></div>
+    <div class="txt t2">
+      <div class="row" data-text="ერთი სასაჩუქრე ბარათი,"></div>
+      <div class="row" data-text="რომლითაც ყველგან გადაიხდი."></div>
+      <i class="streak"></i>
+    </div>
+    <div class="txt t3">
+      <div class="row brand" data-text="საჩუქარდი —"></div>
+      <div class="row" data-text="ყველაფრისთვის, რისი ყიდვაც გინდა."></div>
+    </div>
+    <div class="txt t4">
+      <div class="row url" data-text="www.payunicard.ge"></div>
+      <div class="row tel" data-text="0322 555 222"></div>
+    </div>
+
+    <div class="vignette"></div>
+    <div class="grain"></div>
+  </div>
+
+  <div id="hud">
+    <button id="play" type="button">❚❚</button>
+    <input id="scrub" type="range" min="0" max="10" step="0.001" value="0" />
+    <span id="time">0.00s</span>
+  </div>
+
+  <script type="module" src="./ad.js"></script>
+</body>
+</html>

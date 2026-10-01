@@ -1,0 +1,131 @@
+@font-face { font-family: 'HMPangram'; src: url('/fonts/HMpangram-Medium.woff2') format('woff2'); font-weight: 500; }
+@font-face { font-family: 'HMPangram'; src: url('/fonts/HMpangram-Bold.woff2') format('woff2'); font-weight: 700; }
+@font-face { font-family: 'HMPangram'; src: url('/fonts/HMpangram-Black.woff2') format('woff2'); font-weight: 900; }
+@font-face { font-family: 'Dachi The Lynx'; src: url('./fonts/DachiTheLynx-Regular.otf') format('opentype'); font-weight: 400; }
+
+:root {
+  --navy: #10131F;
+  --green: #90C850;
+  --lime: #B6D639;
+  --mint: #D6F5A8;
+  --light: #EEF1F4;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #05060a; overflow: hidden; }
+
+#stage {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 1920px; height: 1080px;
+  transform-origin: 0 0;
+  overflow: hidden;
+  background: var(--navy);
+  font-family: 'HMPangram', 'Noto Sans Georgian', sans-serif;
+  color: #fff;
+}
+.render #stage { left: 0; top: 0; transform: none !important; }
+.render #hud { display: none; }
+
+#gl { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+
+/* ---------- typography (every word is driven per frame by ad.js) ----------
+   Sizes, colours and positions are measured from the approved reference
+   (1000081404.mp4): Dachi The Lynx, ~168px, off-white line over a green line,
+   no glow or shadow. */
+.msg, .pack, .contact {
+  position: absolute;
+  left: 0; right: 0;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+/* a word's mask: clips vertically only (so words can still travel sideways) */
+.w {
+  display: inline-block;
+  padding: 0.32em 0 0.32em;
+  margin: -0.32em 0 -0.32em;
+  vertical-align: top;
+  clip-path: inset(0 -2000px 0 -2000px);
+}
+.wi { display: inline-block; will-change: transform, clip-path; }
+.sp { display: inline-block; width: .32em; }
+
+.msg {
+  top: 378px;
+  font-family: 'Dachi The Lynx', sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  font-size: 140px;
+  line-height: 182px;
+  color: #F5F6EE;
+}
+.msg .ln { will-change: transform; }
+.msg .green { color: #A5C828; }
+
+/* packshot */
+.pack {
+  top: 355px;
+  font-family: 'Dachi The Lynx', sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+}
+.pk1 { font-size: 169px; line-height: 154px; color: #A5C828; }
+.pk2 { margin-top: 100px; font-size: 59px; line-height: 64px; color: #F5F6EE; }
+
+/* contacts: small, lowercase, one line, a green dot between */
+.contact {
+  top: 945px;
+  font-family: 'HMPangram', sans-serif;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 56px;
+  color: #D1D6D5;
+}
+.contact .dot {
+  display: inline-block;
+  width: 10px; height: 10px;
+  margin: 0 86px;
+  border-radius: 50%;
+  background: #A5C828;
+  vertical-align: middle;
+}
+
+/* scene-to-scene fade (envelope → packshot) */
+.fade { position: absolute; inset: 0; background: var(--navy); opacity: 0; pointer-events: none; }
+/* fade up from / down to black at the very start and end of the film */
+.black { position: absolute; inset: 0; z-index: 5; background: #000; opacity: 0; pointer-events: none; }
+
+/* ---------- finishing layers ---------- */
+.vignette {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 95% at 50% 45%, transparent 55%, rgba(3, 4, 8, .72) 100%);
+}
+.grain {
+  position: absolute; inset: -40px;
+  pointer-events: none;
+  opacity: .07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-position: var(--gx, 0) var(--gy, 0);
+}
+
+/* ---------- preview controls ---------- */
+#hud {
+  position: fixed; left: 16px; right: 16px; bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+  font: 13px/1 system-ui, sans-serif; color: #9EA3AF;
+}
+#hud button { width: 40px; height: 30px; border: 1px solid #3A4050; border-radius: 8px; background: #1B1F2D; color: #fff; cursor: pointer; }
+#hud input { flex: 1; accent-color: var(--green); }
+#time { width: 56px; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------- vertical (9:16) layout: same design, adapted spacing ---------- */
+.portrait #stage, .portrait #gl { width: 1080px; height: 1920px; }
+.portrait .msg { font-size: 140px; line-height: 168px; }
+.portrait .pack { top: 700px; }
+.portrait .pk1 { font-size: 124px; line-height: 132px; }
+.portrait .pk2 { margin-top: 64px; font-size: 64px; line-height: 84px; }
+.portrait .contact { top: 1290px; font-size: 38px; line-height: 50px; }
+.portrait .contact .dot { width: 9px; height: 9px; margin: 0 48px; }
